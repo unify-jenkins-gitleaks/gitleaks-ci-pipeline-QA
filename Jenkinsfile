@@ -67,7 +67,12 @@ pipeline {
 
         stage('Archive SARIF Report') {
             steps {
-                archiveArtifacts artifacts: "${SARIF_FILE}", fingerprint: true
+                  registerSecurityScan(
+                        artifacts: '${SARIF_FILE}',
+                        format: 'sarif',
+                        archive: true
+                    )
+                // archiveArtifacts artifacts: "${SARIF_FILE}", fingerprint: true
             }
         }
     }
