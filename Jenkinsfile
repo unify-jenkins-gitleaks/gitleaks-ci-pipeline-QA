@@ -64,11 +64,12 @@ pipeline {
                 }
             }
         }
+        
 
         stage('Archive SARIF Report') {
             steps {
                   registerSecurityScan(
-                        artifacts: '${SARIF_FILE}',
+                        artifacts: "${SARIF_FILE}",
                         format: 'sarif',
                         archive: true
                     )
